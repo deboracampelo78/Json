@@ -1,7 +1,7 @@
 # Json
 Convert CSV to Json using Gson
 Converter arquivo CSV para Json usando Gson
-
+OBS. Dentro do arquivo movielist.csv, na coluna winner, adicionar "no", nas células que estão vazias. Até que eu ajuste o código para aceitar mull ou vazio.
 Para testar:
 Alocar o arquivo movielist.csv, em algum diretório da sua máquina
 Copiar o caminho
