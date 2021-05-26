@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+
 
 /**
  *
@@ -27,22 +27,22 @@ public class JsonAtual {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         String line = "";
         String delemiter = ";";
-        
-        BufferedReader reader = new BufferedReader(new InputStreamReader
-                (new FileInputStream("C:\\Users\\supero\\Desktop\\docs\\movielist.csv")));
-        
-        BufferedOutputStream stream = new BufferedOutputStream
-                (new FileOutputStream("C:\\Users\\supero\\Desktop\\docs\\arquivo.json"));
-        
-        line = reader.readLine().toString();
+ 
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\supero\\Desktop\\docs\\movielist.csv")));
+        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream("C:\\Users\\supero\\Desktop\\docs\\arquivo.json"));
+
+        line = reader.readLine();
         while ((line = reader.readLine()) != null) {
-                String[] filme = line.split(delemiter);
-                Filmes filmes = new Filmes(filme[0], filme[1], filme[2], filme[3], filme[4]); 
+            String[] filme = line.split(delemiter);
+            Filmes filmes = new Filmes(filme[0], filme[1], filme[2], filme[3], filme[4]);
+            //somente filmes 'winner = yes'
+            if (!filmes.getGanhou().equals("no")) {
                 System.out.println("Filme: " + new GsonBuilder().setPrettyPrinting().create().toJson(filme));
                 String gson = new GsonBuilder().setPrettyPrinting().create().toJson(filme);
-                stream.write(gson.getBytes());               
-                stream.flush();  
-                
-        }        
+                stream.write(gson.getBytes());
+                stream.flush();
+            }
+        }
     }
+
 }
