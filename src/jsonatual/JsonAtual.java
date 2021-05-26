@@ -35,6 +35,7 @@ public class JsonAtual {
         while ((line = reader.readLine()) != null) {
             String[] filme = line.split(delemiter);
             Filmes filmes = new Filmes(filme[0], filme[1], filme[2], filme[3], filme[4]);
+            //somente filmes 'winner = yes'
             if (!filmes.getGanhou().equals("no")) {
                 System.out.println("Filme: " + new GsonBuilder().setPrettyPrinting().create().toJson(filme));
                 String gson = new GsonBuilder().setPrettyPrinting().create().toJson(filme);
